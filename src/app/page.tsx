@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import ProductCard from '@/components/product/ProductCard';
 
 export default async function HomePage() {
     const products = await prisma.product.findMany({
@@ -14,16 +15,7 @@ export default async function HomePage() {
             <p>Find the perfect Chic fashion for your lifestyle.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
                 {products.map((product) => (
-                    <div
-                        key={product.id}
-                        className="border rounded-lg p-4 shadow hover:shadow-lg transition"
-                    >
-                        <h2 className="text-xl font-semibold mb-2">
-                            {product.title}
-                        </h2>
-                        <p className="text-gray-700 mb-4">{product.description}</p>
-                        <p className="text-lg font-bold">${(product.price / 100).toFixed(2)}</p>
-                    </div>
+                    <ProductCard key={product.id} product={product} />
                 ))}
             </div>
         </div>
