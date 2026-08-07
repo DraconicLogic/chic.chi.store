@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductPageProps {
   params: Promise<{
@@ -25,6 +26,12 @@ export default async function ProductPage({
 
   return (
     <main className="max-w-6xl mx-auto p-6">
+        <Link
+  href="/"
+  className="inline-flex items-center mb-6 text-sm text-gray-600 hover:text-black"
+>
+  ← Back to all boots
+</Link>
       <div className="grid md:grid-cols-2 gap-10">
         <div>
           <Image
